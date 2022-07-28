@@ -1,0 +1,86 @@
+ <div class="container">
+    <h2 class="m-4"><u>Find Result</u></h2>
+    <div class="col-6 m-4 ">
+      <div *ngIf="alertError" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{errorMsg}}</strong>
+        <button (click)="closeAlertError()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+        <form [formGroup]="findStudent" (ngSubmit)="FindStudent()">
+          
+            <div class="form-group mb-4">
+              <label>Roll Number</label>
+              <input type="text" class="form-control" placeholder="Enter roll no" formControlName='rollNo'>     
+              <div *ngIf="rollNo.touched && rollNo.invalid" class="alert alert-danger p-1">
+                <div *ngIf="rollNo.errors.required">RollNo is required</div>
+                <div *ngIf="rollNo.errors.pattern">Enter only number</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+                <label>Date of Birth</label>
+                <input type="date" class="form-control" placeholder="Enter date of birth" formControlName='dob'>        
+                <div *ngIf="dob.touched && dob.invalid" class="alert alert-danger p-1">
+                  <div *ngIf="dob.errors.required">Date of Birth is required</div>
+                  
+                </div>
+              </div>
+            <button [disabled]="findStudent.invalid" type="submit" class="btn btn-primary btn-space">Submit</button>
+            <button type="button" (click)="resetForm()" class="btn btn-primary btn-space">Reset</button>
+          </form>
+    </div>
+</div> 
+
+
+
+<!--
+<div class="container-fluid">
+  <div class="row w-100 d-flex justify-content-center align-items-center main-div">
+    <div class="col-12 col-md-8 col-lg-6 col-xxl-5">
+      <div class="card py-3 px-2">
+        <div class="division">
+          <div class="row">
+            <div class="col-6 mx-auto mb-4 text-center">
+              <span class="main-heading">Find Result</span>
+            </div>
+          </div>
+      
+          <form class="form" [formGroup]="findStudent" (ngSubmit)="FindStudent()">
+            <div *ngIf="alertError" class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{errorMsg}}</strong>
+              <button (click)="closeAlertError()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="mb-3">
+              <div class="form-group">
+    
+                <input type="text" class="form-control"  placeholder="RollNo" formControlName='rollNo'>
+                <div *ngIf="rollNo.touched && rollNo.invalid" class="error">
+                  <span *ngIf="rollNo.errors.required">RollNo is required</span> 
+                  <span *ngIf="rollNo.errors.pattern">Enter only number</span>                
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-group">
+                
+                <input type="date" class="form-control" placeholder="Date of Birth" formControlName='dob'>
+                <div *ngIf="dob.touched && dob.invalid" class="error">
+                  <span *ngIf="dob.errors.required">Date of Birth is required</span>
+                </div>
+              </div>
+            </div>
+             <button [disabled]="findStudent.invalid" type="submit" class="btn btn-space form-buttons">
+                <small><i class="fa fa-user px-2"></i>Submit</small>
+              </button>
+             <button type="button" (click)="resetForm()" class="btn btn-space form-buttons">
+                <small><i class="fa fa-refresh px-2"></i> Reset</small>
+              </button>
+          </form>     
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+-->
+

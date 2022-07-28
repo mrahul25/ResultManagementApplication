@@ -1,0 +1,39 @@
+<div *ngIf="hasError" class="container">
+  <h1 class="text-center server-error">Server error</h1>
+  <h1 class="text-center server-error">{{errorMsg}}</h1>
+</div>
+<div *ngIf="!hasError" style="justify-content: center;" class="row">
+  <div class="card mt-2" style="width: 18rem;">
+    <img
+      src="https://th.bing.com/th/id/OIP.ixZ69lPCOZ3ZO5UqSHQGIAHaHa?w=195&h=195&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+      class="card-img-top"
+      alt="image not loaded"
+      height="250px"
+    />
+    <div class="card-body">
+      <h2 class="card-title text-center">Student Details</h2>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <label>Roll no : </label>
+        {{studentDetails.rollNo}}
+      </li>
+      <li class="list-group-item"> 
+        <label>Name : </label>
+        {{studentDetails.name}}
+      </li>
+      <li class="list-group-item">   
+        <label>Date of Birth : </label>
+        {{studentDetails.dob}}  
+      </li>
+        <li class="list-group-item">   
+          <label>Score : </label>
+          {{studentDetails.score}}  
+        </li>
+    </ul>
+  </div>
+
+</div>
+  
+
+  

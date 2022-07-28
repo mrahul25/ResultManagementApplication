@@ -1,0 +1,21 @@
+<!--Main Component for the page -->
+<!--Headers and nav buttons are made in this -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav>
+  <div class="logo">
+     Result Management System
+  </div>
+  <input type="checkbox" id="click">
+  <label for="click" class="menu-btn">
+  <i class="fa fa-bars"></i>
+  </label>
+  <ul>
+     <li><a routerLink="">Home</a></li>
+     <li> <a routerLink="/login" *ngIf="!resultManagementService.isLoggedIn()">Login</a>
+     <li><a routerLink="/register" *ngIf="!resultManagementService.isLoggedIn()">Register</a></li>
+     <li><a (click)="resultManagementService.logout()" *ngIf="resultManagementService.isLoggedIn()">Logout</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet> 
+

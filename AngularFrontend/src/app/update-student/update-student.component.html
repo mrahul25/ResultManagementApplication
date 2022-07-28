@@ -1,0 +1,59 @@
+<!--Update Student-->
+
+<div class="container">
+    <h2 class="m-4">{{panelTitle}}</h2>
+ 
+    <div class="col-6 m-4">
+        <div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Student</strong> {{successStatus}} successfully.
+            <button (click)="closeAlert()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <div *ngIf="alertError" class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{errorMsg}}</strong>
+            <button (click)="closeAlertError()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <form [formGroup]="updateStudent" (ngSubmit)="updatingStudent()">
+            <div class="form-group mb-4">
+              <label>Roll no</label>
+              <input type="text" class="form-control" placeholder="Enter roll no" formControlName='rollNo'>     
+              <div *ngIf="rollNo.touched && rollNo.invalid" class="alert alert-danger p-1">
+                <div *ngIf="rollNo.errors.required">RollNo is required</div>
+                <div *ngIf="rollNo.errors.pattern">Enter only number</div>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+                <label>Name</label>
+                <input type="text" class="form-control" placeholder="Enter name" formControlName='name'>     
+                <div *ngIf="name.touched && name.invalid" class="alert alert-danger p-1">
+                  <div *ngIf="name.errors.required">Name is required</div>
+                 
+                </div>
+              </div>
+            <div class="form-group mb-4">
+                <label>Date of Birth</label>
+                <input type="date" class="form-control" placeholder="Enter date of birth" formControlName='dob'>        
+                <div *ngIf="dob.touched && dob.invalid" class="alert alert-danger p-1">
+                  <div *ngIf="dob.errors.required">Date of Birth is required</div>
+                  
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label>Score</label>
+                <input type="text" class="form-control" placeholder="Enter score" formControlName='score'>     
+                <div *ngIf="score.touched && score.invalid" class="alert alert-danger p-1">
+                  <div *ngIf="score.errors.required">Score is required</div>
+                  <div *ngIf="score.errors.pattern">Enter only number</div>
+                  <div *ngIf="score.errors.min">Min value should be 0</div>
+                  <div *ngIf="score.errors.max">Max value should be 100</div>
+                </div>
+              </div>
+                <button [disabled]="updateStudent.invalid"  type="submit " class="btn btn-primary btn-space">{{panelSubmit}}</button> 
+                <button type="button" (click)="resetForm()" class="btn btn-primary btn-space">Reset</button>                         
+          </form>
+         
+    </div>
+</div>
+
+
+
+

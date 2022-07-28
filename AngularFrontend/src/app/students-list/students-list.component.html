@@ -1,0 +1,44 @@
+<div *ngIf="hasError" class="container">
+  <h1 class="text-center server-error">Server error</h1>
+  <h1 class="text-center server-error">{{errorMsg}}</h1>
+</div>
+
+<div *ngIf="!hasError" class="container">
+ <h2 class="text-center m-4"><u>List of Students</u></h2>
+ <div class="m-4">
+    <button routerLink="/create" type="button" class="btn btn-dark m-4">
+      <small> Add Student</small>
+    </button>
+ </div>
+ <table class="table content-table m-4">
+    <thead>
+      <tr>
+        <th scope="col">Roll Number</th>
+        <th scope="col">Name</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Score</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let student of students|paginate: { itemsPerPage: 5, currentPage: page }">
+        <td ><a routerLink="/details/{{student.id}}">{{student.rollNo}}</a></td>
+        <td>{{student.name}}</td>
+        <td>{{student.dob}}</td>
+        <td>{{student.score}}</td>
+        <td>
+            <a><i (click)="deleteStudent(student.id)" class="fa fa-trash delete" style="font-size: 15px; color: rgb(174, 128, 128);"></i></a>
+            
+            <a routerLink="/update/{{student.id}}"><i  class="fa fa-edit " style="font-size: 15px; color: rgb(8, 8, 20);"></i>
+            </a>
+        </td>
+      </tr>
+      </tbody>
+        
+  </table>
+  <div class="text-center py-3"> 
+    <pagination-controls 
+    (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>
+ 
